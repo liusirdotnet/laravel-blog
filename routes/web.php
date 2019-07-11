@@ -20,13 +20,15 @@ Route::get('/add', function () {
 });
 
 Route::get('/register', function () {
-    return view('register');
+    return view('account/register');
 });
 
 Route::get('/login', function () {
-    return view('login');
+    return view('account.login');
 });
 
 Route::get('/home', function () {
     return view('home');
 });
+
+Route::get('/index', 'UserController@index');
