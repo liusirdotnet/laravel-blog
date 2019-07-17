@@ -27,6 +27,10 @@ Route::get('/login', function () {
     return view('account.login');
 })->name('login');
 
+Route::post('/doLogin', 'UserController@doLogin');
+
+Route::post('/doRegister', 'UserController@doRegister');
+
 Route::get('/home', function () {
     return view('home');
 });

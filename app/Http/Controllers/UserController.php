@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\UserModel;
+use App\UserModel as User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -16,6 +16,40 @@ class UserController extends Controller
     {
         //
         echo 123;exit;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function doLogin(Request $request)
+    {
+        $user = User::where('email', $request->email)
+               ->where('password', $request->password)
+               ->get()
+               ->first()
+               ->toArray();
+        if (!empty($user)) {
+            return redirect("/home");
+        }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function doRegister(Request $request)
+    {
+        $model = new User();
+        $model->name     = $request->name;
+        $model->email    = $request->email;
+        $model->password = $request->password;
+
+        if ($model->save()) {
+            return redirect("/home");
+        }
     }
 
     /**
