@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Route::get('/add', function () {
     return view('add');
@@ -31,8 +29,6 @@ Route::post('/doLogin', 'UserController@doLogin');
 
 Route::post('/doRegister', 'UserController@doRegister');
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/home', 'HomeController@index');
 
 Route::get('/index', 'UserController@index');

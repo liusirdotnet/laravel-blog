@@ -31,6 +31,7 @@ class UserController extends Controller
                ->first()
                ->toArray();
         if (!empty($user)) {
+            $request->session()->put('session_email', [$request->email]);
             return redirect("/home");
         }
     }
@@ -48,6 +49,7 @@ class UserController extends Controller
         $model->password = $request->password;
 
         if ($model->save()) {
+            $request->session()->put('session_email', [$model->email]);
             return redirect("/home");
         }
     }
