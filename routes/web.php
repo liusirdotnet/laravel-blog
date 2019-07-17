@@ -21,11 +21,11 @@ Route::get('/add', function () {
 
 Route::get('/register', function () {
     return view('account/register');
-});
+})->name('register');
 
 Route::get('/login', function () {
     return view('account.login');
-});
+})->name('login');
 
 Route::get('/home', function () {
     return view('home');
